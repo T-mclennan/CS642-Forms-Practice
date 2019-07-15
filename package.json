@@ -1,0 +1,25 @@
+{
+  "name": "cs642-forms-practice",
+  "version": "1.0.0",
+  "description": "Individual forms assignment for CS642",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/T-mclennan/CS642-Forms-Practice.git"
+  },
+  "author": "Tmclennan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/T-mclennan/CS642-Forms-Practice/issues"
+  },
+  "homepage": "https://github.com/T-mclennan/CS642-Forms-Practice#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "node": "^12.6.0"
+  }
+}
