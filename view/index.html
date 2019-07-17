@@ -1,45 +1,129 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Index</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link href="css/index.css" rel="stylesheet">
+    <title>CS 642 :: Practice Form </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,500' rel='stylesheet' type='text/css'>
+    <link href='custom.css' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-	<div align="center">
-		<h1>CSC 642 - Tristan Mclennan</h1>
-		<h2>Forms Assignment</h2>
-		<div></div>
-		<h1>Form Data</h1>
 
-		<p>This is content</p>
+    <div class="container" id="form-container">
 
-		<p>more content</p>
+        <div class="row">
 
-		<div class="big-btn"><button onclick="goToPage('formResults')">Tristan Mclennan</button></div>
-	</div>
+            <div class="col-xl-8 offset-xl-2">
+
+                <h1>Form Practice:</h1>
+                <br>
+                <p class="lead">This is an attempt at adding google's recaptcha</p>
 
 
-	<script>
-		function goToPage(page) {
-			var xmlReq = new XMLHttpRequest();
+                <form id="contact-form" method="post" action="contact.php" role="form">
 
-			xmlReq.onload = function() {
-				if (xmlReq.status == 200)
-					window.location.href = page + ".html";
-			}
+                    <div class="messages"></div>
 
-			xmlReq.open('GET', '/' + page, true);
-			xmlReq.responseType = "document";
-			xmlReq.send();
-		}
-	</script>
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="form_name">First Name *</label>
+                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter first name" required="required"
+                                        data-error="First name is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="form_lastname">Last Name *</label>
+                                    <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter last name" required="required"
+                                        data-error="Last name is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr> 
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="form_email">Email *</label>
+                                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter email" required="required"
+                                        data-error="Valid email is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>   
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="form_email">Confirm Email *</label>
+                                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please re-enter email" required="required"
+                                        data-error="Valid email is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>   
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="form_phone">Phone *</label>
+                                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="XXX XXX-XXXX" required="required">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="form-group">
+                            <label for="form_message">Message *</label>
+                            <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required"
+                                data-error="Please, leave us a message."></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                            <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+
+                        <input type="submit" class="btn btn-success btn-send" value="Submit">
+
+                        <p class="text-muted">
+                            <strong>*</strong> These fields are required. 
+                        </p>
+
+                    </div>
+
+                </form>
+
+            </div>
+            <!-- /.8 -->
+
+        </div>
+        <!-- /.row-->
+
+    </div>
+    <!-- /.container-->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="validator.js"></script>
+    <script src="contact.js"></script>
 </body>
 
 </html>

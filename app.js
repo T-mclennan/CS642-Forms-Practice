@@ -14,9 +14,9 @@ app.get('/', (request, response) => {
 	response.sendFile('view/index.html', {root: __dirname});
 })
 
-app.get('/formResults', (request, response) => {
+app.get('/form', (request, response) => {
 	response.status(200);
-	response.sendFile('view/formResults.html', {root : __dirname})
+	response.sendFile('view/form.html', {root : __dirname})
 })
 
 
