@@ -17,9 +17,9 @@
 
             <div class="col-xl-8 offset-xl-2">
 
-                <h1>Form Practice:</h1>
+                <h1>- Form Practice -</h1>
                 <br>
-                <p class="lead">This is an attempt at adding google's recaptcha</p>
+                <!-- <p class="lead">Please enter the data below:</p> -->
 
 
                 <form id="contact-form" method="post" action="contact.php" role="form">
@@ -86,25 +86,50 @@
                         <hr>
 
                         <div class="form-group">
-                            <label for="form_message">Message *</label>
-                            <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required"
-                                data-error="Please, leave us a message."></textarea>
-                            <div class="help-block with-errors"></div>
+                            <label for="exampleFormControlSelect1">Education Level</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Select One (Optional)</option>
+                              <option>High School</option>
+                              <option>College</option>
+                              <option>Graduate School</option>
+                              <option>Ph.D</option>
+                            </select>
+                          </div> 
+
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Income</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Select One (Optional)</option>
+                              <option>less than $50K</option>
+                              <option>between $50-100K</option>
+                              <option>above $100K</option>
+                            </select>
+                          </div>
+
+                        <hr>
+                        
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                                <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <!-- <input type="submit" class="btn btn-outline-primary btn-sm btn-send" value="Submit"> -->
                         </div>
 
+                        <div class="row">
+                            <input type="submit" class="btn btn-outline-primary btn-sm btn-send" value="Submit"> 
 
-                        <div class="form-group">
-                            <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
-                            <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
-                            <div class="help-block with-errors"></div>
+                            <p class="text-muted" >
+                                <strong>*</strong> These fields are required. 
+                            </p>      
                         </div>
-
-
-                        <input type="submit" class="btn btn-success btn-send" value="Submit">
+                        <!-- <input type="submit" class="btn btn-outline-primary btn-sm btn-send" value="Submit"> 
 
                         <p class="text-muted">
                             <strong>*</strong> These fields are required. 
-                        </p>
+                        </p> -->
 
                     </div>
 
