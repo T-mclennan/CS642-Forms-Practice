@@ -112,7 +112,7 @@
                         
                         <div class="row">
                             <div class="form-group">
-                                <div class="g-recaptcha" data-sitekey="6LcibK4UAAAAAOgmZZEIQLkmnBMGZD4bNLYfluys" data-callback="correctCaptcha"> </div> 
+                                <div class="g-recaptcha" data-sitekey="6LcibK4UAAAAAOgmZZEIQLkmnBMGZD4bNLYfluys" data-callback="checkRecaptcha"> </div> 
                                 
                                 <!-- data-expired-callback="expiredRecaptchaCallback"> -->
 
@@ -164,17 +164,34 @@
 
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
     <script src="validator.js"></script>
     <script src="contact.js"></script>
 
-    <script>
-
-    var correctCaptcha = function(response) {
-        alert(response);
-    };
-    
-    </script>
+    <script> 
+            function checkRecaptcha() {
+              var response = grecaptcha.getResponse();
+              if(response.length == 0) { 
+                //reCaptcha not verified
+                alert("no pass"); 
+              }
+              else { 
+                //reCaptch verified
+                alert("pass"); 
+              }
+            }
+            // implement on the backend
+            function backend_API_challenge() {
+                var response = grecaptcha.getResponse();
+                $.ajax({
+                    type: "POST",
+                    url: 'https://www.google.com/recaptcha/api/siteverify',
+                    data: {"secret" : "6LcibK4UAAAAACA6YxOtT0ftOweSbKTksHZBH0eh", "response" : response, "remoteip":"localhost"},
+                    contentType: 'application/x-www-form-urlencoded',
+                    success: function(data) { console.log(data); }
+                });
+            }
+            </script>
 </body>
 
 </html>
