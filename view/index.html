@@ -112,7 +112,11 @@
                         
                         <div class="row">
                             <div class="form-group">
-                                <div class="g-recaptcha" data-sitekey="6LcibK4UAAAAAOgmZZEIQLkmnBMGZD4bNLYfluys" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                                <div class="g-recaptcha" data-sitekey="6LcibK4UAAAAAOgmZZEIQLkmnBMGZD4bNLYfluys" data-callback="correctCaptcha"> </div> 
+                                
+                                <!-- data-expired-callback="expiredRecaptchaCallback"> -->
+
+                                </div>
                                 <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -163,6 +167,14 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="validator.js"></script>
     <script src="contact.js"></script>
+
+    <script>
+
+    var correctCaptcha = function(response) {
+        alert(response);
+    };
+    
+    </script>
 </body>
 
 </html>
