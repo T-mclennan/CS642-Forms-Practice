@@ -1,22 +1,27 @@
 const express = require('express')
 const app = express()
 var http = require('http').createServer(app)
-const path = require('path')
-const router = express.Router()
+const bodyParser = require('body-parser');
+const router = express.Router();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static(__dirname + '/view'))
-app.use('/', router)
-
+app.use(express.static(__dirname + '/views'));
+app.use('/', router);
+app.use(bodyParser.urlencoded({extended: true}));
+app.set('view engine', 'ejs');
 
 app.get('/', (request, response) => {
 	response.status(200);
-	response.sendFile('view/index.html', {root: __dirname});
+	response.sendFile('views/index.html', {root: __dirname});
 })
 
-app.get('/form', (request, response) => {
-	response.status(200);
-	response.sendFile('view/form.html', {root : __dirname})
+
+app.post('/', (req, res) => {
+	res.status(200);
+	// response.sendFile('view/formResults.html', {root : __dirname})
+	console.log(req.body)
+	res.render('results', {results: req.body});
+	// response.send('Thanks for all the fish');
 })
 
 

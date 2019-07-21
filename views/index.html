@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,500' rel='stylesheet' type='text/css'>
-    <link href='custom.css' rel='stylesheet' type='text/css'>
+    <link href='index.css' rel='stylesheet' type='css'>
 </head>
 
 <body>
@@ -22,11 +22,7 @@
                 <!-- <p class="lead">Please enter the data below:</p> -->
 
 
-                <form id="contact-form" method="post" action="contact.php" role="form">
-
-                <div class="shadow p-4 mb-4 bg-white">
-
-
+                <form id="contact-form" action="/" method="post" role="form">
 
                     <div class="controls">
                         <div class="row">
@@ -34,7 +30,7 @@
                                 <div class="form-group">
                                     <label for="form_name">First Name *</label>
                                     <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter first name" required="required"
-                                        data-error="First name is required.">
+                                        data-error="First name is required." maxlength="40">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -45,7 +41,7 @@
                                 <div class="form-group">
                                     <label for="form_lastname">Last Name *</label>
                                     <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter last name" required="required"
-                                        data-error="Last name is required.">
+                                        data-error="Last name is required." maxlength="40">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -53,12 +49,12 @@
 
                         <hr> 
 
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="form_email">Email *</label>
                                     <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter email" required="required"
-                                        data-error="Valid email is required.">
+                                        data-error="Valid email is required." maxlength="40">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -67,13 +63,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="form_email">Confirm Email *</label>
-                                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please re-enter email" required="required"
-                                        data-error="Valid email is required.">
+                                    <label for="verify_email">Confirm Email *</label> 
+                                    <input id="verify_email" type="email" class="form-control" placeholder="Please re-enter email" required="required"
+                                        data-error="Valid email is required." maxlength="40">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                        </div>   
+                        </div>    -->
 
                         <div class="row">
                             <div class="col-lg-6">
@@ -117,7 +113,7 @@
                                 <!-- data-expired-callback="expiredRecaptchaCallback"> -->
 
                                 </div>
-                                <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
+                                <input class="form-control d-none" data-recaptcha="true" data-error="Please complete the Captcha">
                                 <div class="help-block with-errors"></div>
                             </div>
 
@@ -128,17 +124,26 @@
                             
                             <div class="form-group form-check">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="remember" required> I agree to all possible terms of service.
+                                    <input class="form-check-input" type="checkbox" name="remember" > I agree to all possible terms of service.
                                     <div class="invalid-feedback">Check this checkbox to continue.</div>
                                 </label>
                             </div>
 
-                            <input type="submit" class="btn btn-outline-primary btn-send" value="Submit"> 
+                            <!-- <input type="submit" class="btn btn-outline-primary btn-send" value="Submit">  -->
 
                             <p class="text-muted" >
-                                <strong>*</strong> These fields are required. 
+                                <strong style='color: red'>*</strong> These fields are required. 
                             </p>      
                         </div>
+
+                        <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-outline-primary btn-send" value="Submit"> 
+                                    </div>
+                                </div>
+                            </div>   
+                        
                         <!-- <input type="submit" class="btn btn-outline-primary btn-sm btn-send" value="Submit"> 
 
                         <p class="text-muted">
@@ -146,7 +151,6 @@
                         </p> -->
 
                     </div>
-                </div>
 
                 </form>
 
@@ -165,8 +169,8 @@
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
-    <script src="validator.js"></script>
-    <script src="contact.js"></script>
+    <!-- <script src="validator.js"></script>
+    <script src="contact.js"></script> -->
 
     <script> 
             function checkRecaptcha() {
@@ -191,7 +195,7 @@
                     success: function(data) { console.log(data); }
                 });
             }
-            </script>
+        </script>
 </body>
 
 </html>
