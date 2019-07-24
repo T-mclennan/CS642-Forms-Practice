@@ -20,7 +20,7 @@ app.post('/', (req, res) => {
 	res.status(200);
 	// response.sendFile('view/formResults.html', {root : __dirname})
 	console.log(req.body)
-	res.render('results', {results: req.body});
+	res.render('results', {userData: req.body});
 	// response.send('Thanks for all the fish');
 })
 

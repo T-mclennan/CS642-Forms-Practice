@@ -4,18 +4,78 @@
     <title>CS 642 :: Form Results: </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,500' rel='stylesheet' type='text/css'>
-    <link href='index.css' rel='stylesheet' type='css'> -->
+    
+    <link href='index.css' rel='stylesheet' type='css'>
+
+    <style>
+       #map{
+            justify-content: center;
+            height: 400px;
+            width: 50%;
+        }
+    </style>
 </head>
 
-<body>
-    <div>
-        <h2>Name: <%= results.name %> <%= results.surname %></h2>
-        <h2>Phone: <%= results.phone %></h2>
-
-
+<body onload="codeAddress(document.getElementById('user-address').innerText)">
+    <div class="container" id="results-container">
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2">
+                <h2>Name: <%= userData.name %> <%= userData.surname %></h2>
+                <h2>Phone: <%= userData.phone %></h2>
+                <hr>
+                <p>
+                    Address:  <span id="user-address"> 
+                                  <%= userData.street %>
+                                  <%= userData.city %>,
+                                  <%= userData.state %>
+                                
+                              </span>
+                </p>
+                <br>
+                <div id="map" style="width: 500px; height: 500px;"></div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        var geocoder;
+        var map;
+        function initialize() {
+            geocoder = new google.maps.Geocoder();
+            var latlng = new google.maps.LatLng(-34.397, 150.644);
+            var mapOptions = {
+                zoom: 12,
+                center: latlng
+            }
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        }
+    
+        function codeAddress(address) {
+            initialize()
+            geocoder.geocode( { 'address': address}, function(results, status) {
+            if (status == 'OK') {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+            });
+        }
+
+    
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUkCQo0BGoy-oglBRwvbrlH4pqJb9Ra9s&callback=initMap"
+    async defer></script>
     <!-- <script src="ejs.js"></script> -->
 </body>
 </html>
+
+
+
+

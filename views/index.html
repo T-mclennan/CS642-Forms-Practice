@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,500' rel='stylesheet' type='text/css'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
+    
     <link href='index.css' rel='stylesheet' type='css'>
 </head>
 
@@ -48,6 +50,58 @@
                         </div>
 
                         <hr> 
+
+                        <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="address">Street Address *</label>
+                                        <input id="form_address" type="text" name="street" class="form-control" placeholder="1234 Main st." required="required"
+                                            data-error="Address is required." maxlength="100">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                            <label for="address">City *</label>
+                                            <input id="City" type="text" name="city" class="form-control" placeholder="Please enter city" required="required"
+                                                data-error="Address is required." maxlength="100">
+                                            <div class="help-block with-errors"></div>
+                                    </div>
+
+                                    <div class="form-group" required>
+                                            <label for="address">State *</label>
+                                            <select class="form-control" id="state" name="state"></select>
+                                    </div>    
+                                </div>
+                            </div>
+
+
+
+                            <hr>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Education Level</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>Select One (Optional)</option>
+                              <option>High School</option>
+                              <option>College</option>
+                              <option>Graduate School</option>
+                              <option>Ph.D</option>
+                            </select>
+                          </div> 
+
+                        <!-- <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                            <div class="md-form"></div>
+                                                    <i class="fas fa-envelope prefix"></i>
+                                                    <input type="text" id="inputIconEx1" class="form-control">
+                                                    <label for="inputIconEx1">E-mail address</label>
+                                                  </div>
+                                    </div>
+                                </div>
+                        </div> -->
+
+
 
                         <!-- <div class="row">
                             <div class="col-lg-6">
@@ -105,7 +159,7 @@
                           </div>
 
                         <hr>
-                        
+                      
                         <div class="row">
                             <div class="form-group">
                                 <div class="g-recaptcha" data-sitekey="6LcibK4UAAAAAOgmZZEIQLkmnBMGZD4bNLYfluys" data-callback="checkRecaptcha"> </div> 
@@ -165,6 +219,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/js/mdb.min.js"></script>
 
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
@@ -172,6 +227,21 @@
     <!-- <script src="validator.js"></script>
     <script src="contact.js"></script> -->
 
+    <script>
+        const stateAbbreviations = [ 'Choose one:',
+            'AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA',
+            'GU','HI','ID','IL','IN','IA','KS','KY','LA','ME','MH','MD','MA',
+            'MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND',
+            'MP','OH','OK','OR','PW','PA','PR','RI','SC','SD','TN','TX','UT',
+            'VT','VI','VA','WA','WV','WI','WY'
+        ];
+
+        $('#state').empty();
+        $.each(stateAbbreviations, function(i, p) {
+            $('#state').append($('<option></option>').val(p).html(p));
+        });
+    </script>
+    
     <script> 
             function checkRecaptcha() {
               var response = grecaptcha.getResponse();
