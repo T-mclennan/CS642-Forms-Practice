@@ -7,37 +7,55 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,500' rel='stylesheet' type='text/css'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display|Ubuntu&display=swap" rel="stylesheet">
     
-    <link href='index.css' rel='stylesheet' type='css'>
+    <link href='./css/index.css' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
+    <nav class="navbar navbar-light" style='background-color: white;'>
+        <div class ="row" style="padding-top: 0px; padding-bottom: 0px; padding-left: 110px;">
+            <h1> Form Project</h1>
+        </div>
 
-    <div class="container" id="form-container">
+        <div class ="row" style="padding-top: 0px; padding-bottom: 0px; padding-left: 50px; padding-right: 30px;">
+            <h5> Tristan Mclennan - CSC642 Summer 2019</h5>
+        </div>
+    </nav>
+
+    
+    <div class="container-fluid" style="margin-top: 20px;margin-bottom: 20px;" id="form-container">
         <div class="row">
             <div class="col-xl-8 offset-xl-2">
+                
 
-                <h1>- Form Practice -</h1>
-                <br>
-                <!-- <p class="lead">Please enter the data below:</p> -->
+            <div class="card card-inverse" style="background-color:#fffbf6; border-color: white;
+                        padding-top: 50px; padding-right: 70px;padding-bottom: 50px;padding-left: 70px;">
+                <div class="card-block"> 
 
+                <div class='header' style="text-align: center; margin-bottom: 30px">
+                    <h3>Please enter the following information below:</h3>
+                </div>
+                <hr><br>
 
                 <form id="contact-form" action="/" method="post" role="form">
 
                     <div class="controls">
-                        <div class="row">
-                            <div class="col-lg-6">
+                         <div class="row">
+                            <div class="col-lg-8"> 
                                 <div class="form-group">
-                                    <label for="form_name">First Name *</label>
-                                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter first name" required="required"
-                                        data-error="First name is required." maxlength="40">
-                                    <div class="help-block with-errors"></div>
+                                    <div class="col-xs-1">
+                                        <label for="form_name">First Name *</label>
+                                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter first name" required="required"
+                                            data-error="First name is required." maxlength="40">
+                                        <div class="help-block with-errors"></div>
+                                    </div>                                  
                                 </div>
                             </div>
                         </div>
                         
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-8">
                                 <div class="form-group">
                                     <label for="form_lastname">Last Name *</label>
                                     <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Please enter last name" required="required"
@@ -50,62 +68,45 @@
                         <hr> 
 
                         <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="address">Street Address *</label>
-                                        <input id="form_address" type="text" name="street" class="form-control" placeholder="1234 Main st." required="required"
-                                            data-error="Address is required." maxlength="100">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
+                            <div class="col-lg-8">
+                                 <div class="form-group">
+                                     <label for="address">Street Address *</label>
+                                    <input id="form_address" type="text" name="street" class="form-control" placeholder="1234 Main st." 
+                                            pattern ="\d{1,5}(\s\w+)+([A-Za-z]{1,3}\.)?" required="required" 
+                                            oninvalid="setCustomValidity('Please enter a valid street address')" maxlength="40">
+                                    <div class="help-block with-errors"></div>
+                                </div>
 
                                     <div class="form-group">
-                                            <label for="address">City *</label>
-                                            <input id="City" type="text" name="city" class="form-control" placeholder="Please enter city" required="required"
-                                                data-error="Address is required." maxlength="100">
+                                            <label for="city">City *</label>
+                                            <input id="city" type="text" name="city" class="form-control" placeholder="Please enter city" required="required"
+                                                data-error="City is required." maxlength="20">
                                             <div class="help-block with-errors"></div>
                                     </div>
 
-                                    <div class="form-group" required>
-                                            <label for="address">State *</label>
-                                            <select class="form-control" id="state" name="state"></select>
+                                    <div class="form-group row" style="margin-left:0px" required>
+                                            <div class="col-xs-1" style="margin-right:70px">
+                                               <label for="address">State *</label>
+                                               <select class="form-control" id="state" name="state"></select>
+                                           </div> 
+
+                                           <div class="col-xs-1" >
+                                                <label for="zip">Zip Code</label>
+                                                <input class="form-control" type="text" type="text" pattern="[0-9]{5}"
+                                                        placeholder="XXXXX" id="zip" name="zip" oninvalid="setCustomValidity('Please enter a 5 digit zip code')" required="required">
+                                                </input>
+                                            </div>
                                     </div>    
                                 </div>
                             </div>
 
-
-
                             <hr>
 
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Education Level</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                              <option>Select One (Optional)</option>
-                              <option>High School</option>
-                              <option>College</option>
-                              <option>Graduate School</option>
-                              <option>Ph.D</option>
-                            </select>
-                          </div> 
-
-                        <!-- <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                            <div class="md-form"></div>
-                                                    <i class="fas fa-envelope prefix"></i>
-                                                    <input type="text" id="inputIconEx1" class="form-control">
-                                                    <label for="inputIconEx1">E-mail address</label>
-                                                  </div>
-                                    </div>
-                                </div>
-                        </div> -->
-
-
-
-                        <!-- <div class="row">
-                            <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-10">
                                 <div class="form-group">
                                     <label for="form_email">Email *</label>
-                                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter email" required="required"
+                                    <input id="p1" type="email" name="email" class="form-control" placeholder="Please enter email" required="required"
                                         data-error="Valid email is required." maxlength="40">
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -113,21 +114,24 @@
                         </div>   
 
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-10">
                                 <div class="form-group">
                                     <label for="verify_email">Confirm Email *</label> 
                                     <input id="verify_email" type="email" class="form-control" placeholder="Please re-enter email" required="required"
-                                        data-error="Valid email is required." maxlength="40">
+                                        data-error="Valid email is required." maxlength="40"
+                                        onfocus="validateMail(document.getElementById('p1'), this);" 
+                                        oninput="validateMail(document.getElementById('p1'), this);">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                        </div>    -->
+                        </div>   
 
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-8">
                                 <div class="form-group">
                                     <label for="form_phone">Phone *</label>
-                                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="XXX XXX-XXXX" required="required">
+                                    <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="XXX XXX-XXXX" 
+                                    pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" oninvalid="setCustomValidity('Please enter a 10 digit phone number')" required="required">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -135,7 +139,8 @@
 
                         <hr>
 
-                        <div class="form-group">
+                        <div class="form-group row">
+                            <div class="col-md-5" > 
                             <label for="exampleFormControlSelect1">Education Level</label>
                             <select class="form-control" id="exampleFormControlSelect1">
                               <option>Select One (Optional)</option>
@@ -145,8 +150,10 @@
                               <option>Ph.D</option>
                             </select>
                           </div> 
+                        </div>
 
-                          <div class="form-group">
+                          <div class="form-group row">
+                                <div class="col-md-5" > 
                             <label for="exampleFormControlSelect1">Income</label>
                             <select class="form-control" id="exampleFormControlSelect1">
                               <option>Select One (Optional)</option>
@@ -155,56 +162,55 @@
                               <option>above $100K</option>
                             </select>
                           </div>
+                        </div>
 
                         <hr>
                       
                         <div class="row">
-                            <div class="form-group">
-                                <div class="g-recaptcha" data-sitekey="6LcibK4UAAAAAOgmZZEIQLkmnBMGZD4bNLYfluys" data-callback="checkRecaptcha"> </div> 
-                                
-                                <!-- data-expired-callback="expiredRecaptchaCallback"> -->
+                             <div class="col-lg-7" style="padding-left: 10px; margin-top: 5px;margin-bottom: 5px;"> 
+                                <div class="form-group">
+                                    <div class="g-recaptcha" data-sitekey="6LcibK4UAAAAAOgmZZEIQLkmnBMGZD4bNLYfluys" data-callback="recaptchaCallback" required="required">  
+                                        oninvalid="setCustomValidity('Please click on the re-captcha to verify humanity.')" 
+                                        required="required">  
+                                     </div> 
+                                </div>    
+                            </div> 
 
-                                </div>
-                                <input class="form-control d-none" data-recaptcha="true" data-error="Please complete the Captcha">
-                                <div class="help-block with-errors"></div>
-                            </div>
-
-                            <!-- <input type="submit" class="btn btn-outline-primary btn-sm btn-send" value="Submit"> -->
-                        </div>
-
-                        <div class="row">
-                            
-                            <div class="form-group form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" name="remember" > I agree to all possible terms of service.
-                                    <div class="invalid-feedback">Check this checkbox to continue.</div>
-                                </label>
-                            </div>
-
-                            <!-- <input type="submit" class="btn btn-outline-primary btn-send" value="Submit">  -->
-
-                            <p class="text-muted" >
-                                <strong style='color: red'>*</strong> These fields are required. 
-                            </p>      
-                        </div>
-
-                        <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <input type="submit" class="btn btn-outline-primary btn-send" value="Submit"> 
+                            <div class="col-lg-7" style="padding-left: 10px;"> 
+                                <div class="card border" style="height: 50px; width: 340; border-color: grey ">
+                                    <div class="card-body shadow-none" style="
+                                        padding-top: 8px;
+                                        padding-bottom: 0px;
+                                        padding-right: 10px;
+                                        height: 40px;
+                                        background-color:#F9F9F9;
+                                        padding-left: 10px;
+                                        ">
+                                        <div class="form-group form-check" >
+                                            <input class="form-check-input" type="checkbox" name="check" id="check" required="required">
+                                                <label for="check" class="form-check-label" style="justify-content: center">      
+                                                        <p>
+                                                            <span>I agree to all possible terms of service.</span>
+                                                            <span style="color: #ff0000"> *</span>
+                                                        </p>
+                                                </label>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>   
-                        
-                        <!-- <input type="submit" class="btn btn-outline-primary btn-sm btn-send" value="Submit"> 
+                                 </div>
+                             </div> 
 
-                        <p class="text-muted">
-                            <strong>*</strong> These fields are required. 
-                        </p> -->
-
+                        <div class="col-lg-6" style="padding-left: 5px; margin-top: 20px;">
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-outline-primary btn-lg btn-send" 
+                                       id="btn-validate" value="    Submit Form    "> 
+                            </div>
+                        </div>
                     </div>
 
+
                 </form>
+               </div>
+             </div>
 
             </div>
             <!-- /.8 -->
@@ -218,13 +224,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/js/mdb.min.js"></script>
-
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
     <script src='https://www.google.com/recaptcha/api.js' async defer></script>
-    <!-- <script src="validator.js"></script>
-    <script src="contact.js"></script> -->
 
+
+    <!-- Populates the dropdown menu for State input: -->
     <script>
         const stateAbbreviations = [ 'Choose one:',
             'AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA',
@@ -240,30 +243,32 @@
         });
     </script>
     
-    <script> 
-            function checkRecaptcha() {
-              var response = grecaptcha.getResponse();
-              if(response.length == 0) { 
-                //reCaptcha not verified
-                alert("no pass"); 
-              }
-              else { 
-                //reCaptch verified
-                alert("pass"); 
-              }
+    <!-- This is the email validation script: -->
+    <script>        
+            function validateMail(p1, p2) {
+            if (p1.value != p2.value || p1.value == '' || p2.value == '') {
+                p2.setCustomValidity('email incorrect');
+            } else {
+                p2.setCustomValidity('');
             }
+            }
+    </script>
 
-            function backend_API_challenge() {
-                var response = grecaptcha.getResponse();
-                $.ajax({
-                    type: "POST",
-                    url: 'https://www.google.com/recaptcha/api/siteverify',
-                    data: {"secret" : "6LcibK4UAAAAACA6YxOtT0ftOweSbKTksHZBH0eh", "response" : response, "remoteip":"tmclennan-form-assignment.herokuapp.com"},
-                    contentType: 'application/x-www-form-urlencoded',
-                    success: function(data) { console.log(data); }
-                });
+
+    <!-- This is the recaptcha validation script: -->
+    <script>  
+        function recaptchaCallback() {
+             $('#hiddenRecaptcha').valid();
+        };
+
+        window.onload = function() {
+            var $recaptcha = document.querySelector('#g-recaptcha-response');
+            if($recaptcha) {
+                $recaptcha.setAttribute("required", "required");
             }
-        </script>
+        };
+    </script>
+
 </body>
 
 </html>
