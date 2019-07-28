@@ -84,16 +84,18 @@
                                             <div class="help-block with-errors"></div>
                                     </div>
 
-                                    <div class="form-group row" style="margin-left:0px" required>
+                                    <div class="form-group row" style="margin-left:0px" >
                                             <div class="col-xs-1" style="margin-right:70px">
                                                <label for="address">State *</label>
-                                               <select class="form-control" id="state" name="state"></select>
+                                               <select class="form-control" id="state" name="state" required='required'></select>
                                            </div> 
 
                                            <div class="col-xs-1" >
-                                                <label for="zip">Zip Code</label>
+                                                <label for="zip">Zip Code *</label>
                                                 <input class="form-control" type="text" type="text" pattern="[0-9]{5}"
-                                                        placeholder="XXXXX" id="zip" name="zip" oninvalid="setCustomValidity('Please enter a 5 digit zip code')" required="required">
+                                                        placeholder="XXXXX" id="zip" name="zip" 
+                                                        required="required"
+                                                        onfocus="validateState(document.getElementById('state'));"> 
                                                 </input>
                                             </div>
                                     </div>    
@@ -131,19 +133,21 @@
                                 <div class="form-group">
                                     <label for="form_phone">Phone *</label>
                                     <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="XXX XXX-XXXX" 
-                                    pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" oninvalid="setCustomValidity('Please enter a 10 digit phone number')" required="required">
+                                    pattern="^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$" required="required">
+                                 
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- oninvalid="setCustomValidity('Please enter a 10 digit phone number')" required="required"> -->
                         <hr>
 
-                        <div class="form-group row">
+                        <div class="form-group">
                             <div class="col-md-5" > 
                             <label for="exampleFormControlSelect1">Education Level</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                              <option>Select One (Optional)</option>
+                            <select class="form-control" id="education" name='education'>
+                              <option selected disabled>Select One (Optional)</option>
                               <option>High School</option>
                               <option>College</option>
                               <option>Graduate School</option>
@@ -152,11 +156,11 @@
                           </div> 
                         </div>
 
-                          <div class="form-group row">
+                          <div class="form-group">
                                 <div class="col-md-5" > 
-                            <label for="exampleFormControlSelect1">Income</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                              <option>Select One (Optional)</option>
+                            <label for="income">Income</label>
+                            <select class="form-control" id="income" name='income'>
+                              <option selected disabled>Select One (Optional)</option> 
                               <option>less than $50K</option>
                               <option>between $50-100K</option>
                               <option>above $100K</option>
@@ -170,8 +174,8 @@
                              <div class="col-lg-7" style="padding-left: 10px; margin-top: 5px;margin-bottom: 5px;"> 
                                 <div class="form-group">
                                     <div class="g-recaptcha" data-sitekey="6LcibK4UAAAAAOgmZZEIQLkmnBMGZD4bNLYfluys" data-callback="recaptchaCallback" required="required">  
-                                        oninvalid="setCustomValidity('Please click on the re-captcha to verify humanity.')" 
-                                        required="required">  
+                                      <!-- oninvalid="setCustomValidity('Please click on the re-captcha to verify humanity.')"  -->
+                                        <!-- required="required">   -->
                                      </div> 
                                 </div>    
                             </div> 
@@ -187,7 +191,8 @@
                                         padding-left: 10px;
                                         ">
                                         <div class="form-group form-check" >
-                                            <input class="form-check-input" type="checkbox" name="check" id="check" required="required">
+                                            <input class="form-check-input" type="checkbox" name="check" id="check" required="required"
+                                            onclick="dropDownValidation();">
                                                 <label for="check" class="form-check-label" style="justify-content: center">      
                                                         <p>
                                                             <span>I agree to all possible terms of service.</span>
@@ -229,7 +234,7 @@
 
     <!-- Populates the dropdown menu for State input: -->
     <script>
-        const stateAbbreviations = [ 'Choose one:',
+        const stateAbbreviations = [ 
             'AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA',
             'GU','HI','ID','IL','IN','IA','KS','KY','LA','ME','MH','MD','MA',
             'MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND',
@@ -238,22 +243,69 @@
         ];
 
         $('#state').empty();
+        $('#state').append($('<option selected disabled></option>').val("").html("Choose One:"));
         $.each(stateAbbreviations, function(i, p) {
             $('#state').append($('<option></option>').val(p).html(p));
         });
     </script>
     
+
+    <script>
+        var button = document.getElementById("btn-validate");
+        butt.addEventListener('click', dropDownValidation)
+    
+    </script>
+
+
+    <script>
+        function dropDownValidation() {
+
+            var state = document.getElementById("state");
+            var education = document.getElementById("eductation");
+            var income = document.getElementById("income");
+
+            if (state.value === 'Choose One:') {
+                console.log('state is default')
+                state.setCustomValidity("Invalid field.");
+                state.removeClass("valid").addClass("invalid");
+            } 
+            if (education.value === 'Select One (Optional)') {
+                console.log('education is default')
+                education.setCustomValidity("Invalid field.");
+                education.removeClass("valid").addClass("invalid");
+            } 
+            if (income.value === 'Select One (Optional)') {
+                console.log('income is default')
+                income.setCustomValidity("Invalid field.");
+                income.removeClass("valid").addClass("invalid");
+            } 
+        }   
+    
+    </script>
+
     <!-- This is the email validation script: -->
     <script>        
             function validateMail(p1, p2) {
-            if (p1.value != p2.value || p1.value == '' || p2.value == '') {
-                p2.setCustomValidity('email incorrect');
-            } else {
-                p2.setCustomValidity('');
-            }
+                if (p1.value != p2.value || p1.value == '' || p2.value == '') {
+                    p2.setCustomValidity('email incorrect');
+                } else {
+                    p2.setCustomValidity('');
+                }
             }
     </script>
 
+    <script>        
+        function validateState(dropdown) {
+            console.log('selected element!')
+            if (dropdown.value == 'Choose One') {
+                console.log('incorrect state')
+                dropdown.setCustomValidity("Invalid field.");
+            } else {
+                console.log('correct state')
+                dropdown.setCustomValidity('');
+            }
+        }
+    </script>
 
     <!-- This is the recaptcha validation script: -->
     <script>  

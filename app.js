@@ -21,7 +21,6 @@ app.post('/', (req, res) => {
 	// response.sendFile('view/formResults.html', {root : __dirname})
 	console.log(req.body)
 	res.render('results', {userData: req.body});
-	// response.send('Thanks for all the fish');
 })
 
 

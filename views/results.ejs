@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display|Ubuntu&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,500' rel='stylesheet' type='text/css'>
     
-    <link href='index.css' rel='stylesheet' type='css'>
+    <link href='./css/result.css' rel='stylesheet' type='text/css'>
 
     <style>
        #map{
@@ -19,24 +21,64 @@
 </head>
 
 <body onload="codeAddress(document.getElementById('user-address').innerText)">
-    <div class="container" id="results-container">
+    <!-- <div class="container" id="results-container">
         <div class="row">
-            <div class="col-xl-8 offset-xl-2">
-                <h2>Name: <%= userData.name %> <%= userData.surname %></h2>
-                <h2>Phone: <%= userData.phone %></h2>
-                <hr>
-                <p>
-                    Address:  <span id="user-address"> 
-                                  <%= userData.street %>
-                                  <%= userData.city %>,
-                                  <%= userData.state %>
-                                
-                              </span>
-                </p>
+            <div class="col-xl-8 offset-xl-2"> -->
+                    <div class="container-fluid" style="margin-top: 20px;margin-bottom: 20px;" id="result-container">
+                            <div class="row">
+                                <div class="col-xl-8 offset-xl-2">
+                                    
+                    
+                                <div class="card card-inverse" style="background-color:#e5f9ff; color: #485e74; border-color: white;
+                                            padding-top: 50px; padding-right: 70px;padding-bottom: 50px;padding-left: 70px;">
+                                    <div class="card-block"> 
                 <br>
+                <h3>Thanks! Here is what you entered:</h3>
+                <hr>
+                <h5>Name: <%= userData.name %> <%= userData.surname %></h5>
+                <h5>Phone: <%= userData.phone %></h5>
+                <%if (userData.email) { %>
+                    <h5>Email: <%= userData.email %></h5>    
+                <% } %>
+
+                <%if (userData.education) { %>
+                    <h5>Education: <%= userData.education %></h5>    
+                <% } %>
+
+                <%if (userData.income) { %>
+                    <h5>Income: <%= userData.income %></h5>    
+                <% } %>
+
+                <hr>
+                <p style='font-size: 20px; font-weight: bold;'>
+                    Address:  
+                    <span id="user-address" style='font-size: 20px; font-weight: bold;'>
+                        <%= userData.street %>
+                        <%= userData.city %>,
+                        <%if (userData.state) { %>
+                            <%= userData.state %>,    
+                        <% } %>
+                        <%if (userData.state) { %>
+                            <%= userData.state %>,    
+                        <% } %>
+                        <%if (userData.state) { %>
+                            <%= userData.state %>,    
+                        <% } %>
+                        <%= userData.zip %>     
+                    </span>
+                </p>
+
+                <!-- <%if (userData.email) { %>
+                    <h5>Email: <%= userData.email %></h5>    
+                <% } %> -->
+
+
+                <!-- <br> -->
                 <div id="map" style="width: 500px; height: 500px;"></div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <script>
@@ -46,7 +88,7 @@
             geocoder = new google.maps.Geocoder();
             var latlng = new google.maps.LatLng(-34.397, 150.644);
             var mapOptions = {
-                zoom: 12,
+                zoom: 14,
                 center: latlng
             }
             map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -62,17 +104,19 @@
                     position: results[0].geometry.location
                 });
             } else {
-                alert('Geocode was not successful for the following reason: ' + status);
+                alert('Address provided not found: ' + status);
             }
             });
         }
 
     
     </script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUkCQo0BGoy-oglBRwvbrlH4pqJb9Ra9s&callback=initMap"
     async defer></script>
-    <!-- <script src="ejs.js"></script> -->
+
 </body>
 </html>
 
