@@ -81,10 +81,12 @@
                                     <div class="form-group">
                                             <label for="city">City *</label>
                                             <input id="city" type="text" name="city" class="form-control" placeholder="Please enter city" required="required"
-                                                pattern="[a-zA-Z]+(\s[a-zA-Z])?"
-                                                data-error="City is required." maxlength="40">
+                                                data-error="City is required." pattern="^[a-zA-Z',.\s-]{1,40}$" 
+                                                title='Please enter a valid city name.' maxlength="40">
                                             <div class="help-block with-errors"></div>
                                     </div>
+
+                                    <!-- pattern="[a-zA-Z]+(\s[a-zA-Z])?" -->
 
                                     <div class="form-group row" style="margin-left:0px" >
                                             <div class="col-xs-1" style="margin-right:70px">
