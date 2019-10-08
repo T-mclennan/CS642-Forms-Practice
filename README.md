@@ -2,7 +2,7 @@
 
 https://tmclennan-form-assignment.herokuapp.com/
 
-General goal of this assignment is for students to learn the design and implementation of some common GUI component at professional quality in terms of design, correctness, dealing with user errors, field validation and robustness to attacks, cross browser and platform compatibility and usability. Students will also practice (optionally) automated GUI testing.
+The goal of this assignment is to learn the design and implementation of some common GUI component at professional quality in terms of design, correctness, dealing with user errors, field validation and robustness to attacks, cross browser and platform compatibility and usability. Students will also practice (optionally) automated GUI testing.
 
 We were given 2 weeks to implement and deploy to a server for testing. 
 
