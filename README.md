@@ -1,5 +1,5 @@
 # Forms-Practice :: Tristan Mclennan 
-# CSC 642 :: Summer 2019
+# CSC 642 Human Computer Interaction :: Summer 2019
 
 https://tmclennan-form-assignment.herokuapp.com/
 
