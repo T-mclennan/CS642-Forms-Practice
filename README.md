@@ -1,4 +1,5 @@
-# CS642-Forms-Practice :: Tristan Mclennan :: Summer 2019
+# Forms-Practice :: Tristan Mclennan 
+# CSC 642 :: Summer 2019
 
 https://tmclennan-form-assignment.herokuapp.com/
 
