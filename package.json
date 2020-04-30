@@ -21,7 +21,7 @@
     "body-parser": "^1.19.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mdbootstrap": "^4.8.7",
     "node": "^12.6.0"
   }
